@@ -1,0 +1,27 @@
+{
+  "name": "addon",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 10"
+  },
+  "scripts": {
+    "build": "napi build --release --platform",
+    "build:win:ia32": "napi build --release --target i686-pc-windows-msvc && mv addon.node ./build/addon.win32-ia32-msvc.node",
+    "build:win:x64": "napi build --release --target x86_64-pc-windows-msvc && mv addon.node ./build/addon.win32-x64-msvc.node",
+    "build:darwin:x64": "napi build --release --target x86_64-apple-darwin && mv addon.node ./build/addon.darwin-x64.node",
+    "build:darwin:arm64": "napi build --release --target aarch64-apple-darwin && mv addon.node ./build/addon.darwin-arm64.node"
+  },
+  "dependencies": {
+    "@node-rs/helper": "^1.2.1"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^1.3.5"
+  },
+  "napi": {
+    "name": "addon",
+    "triples": {
+      "defaults": false
+    }
+  }
+}
